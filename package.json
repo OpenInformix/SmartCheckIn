@@ -1,0 +1,23 @@
+{
+  "name": "smartcheckin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "keywords": [
+    "REST API",
+    "IoT"
+  ],
+  "author": "Sathyanesh Krishnan",
+  "license": "Apache License",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "ifxnjs": "^10.0.5",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10"
+  }
+}
