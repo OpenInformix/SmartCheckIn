@@ -61,15 +61,21 @@ class MyWebMedia {
     MyPhotoContainerElement.style.borderColor = MediaContainerDefaultColor;
   }
 
-  SetStatusPhotoCompare(eDistance) {
+  SetStatusPhotoCompare(jsonObj) {
     let MyPhotoContainerElement = document.querySelector("#photo-container");
 
-    if (eDistance > this.eDistLowerThreshold && eDistance < this.eDistUpperThreshold) {
+    if (jsonObj.eDistance > this.eDistLowerThreshold && 
+          jsonObj.eDistance < this.eDistUpperThreshold) {
       MyPhotoContainerElement.style.borderColor = "green";
       this.DisplayAlerts("success", 2000, 300, "Welcome aboard");
     } else {
       MyPhotoContainerElement.style.borderColor = "red";
-      this.DisplayAlerts("danger", 3000, 300, "Verification failed, please proceed to manual check-in process"  );
+      let s = "Photo verification failed: please proceed to manual check-in process";
+      if ( jsonObj.mlsCode1 == 0 ) {
+        s = "User not found: please proceed to manual check-in process";
+      }
+
+      this.DisplayAlerts("danger", 3000, 300, s  );
     }
   }
 
@@ -84,9 +90,7 @@ class MyWebMedia {
     }
 
     console.log(jsonObj);
-    let eDistance = jsonObj.eDistance;
-    console.log("eDistance = " + eDistance);
-    that.SetStatusPhotoCompare(eDistance);
+    that.SetStatusPhotoCompare(jsonObj);
   }
 
   AddNewPassengerDataHandler( data, Data4Handlers, that) {

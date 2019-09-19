@@ -61,7 +61,6 @@
                     <!-- Heading -->
                     <div class="card-body">
                         <h4 class="card-title">Live Web Cam</h4>
-                        <h6 class="card-subtitle text-muted">Smart check-in!</h6>
                     </div>
                     <!-- Text Content -->
                     <div class="card-body">
@@ -85,7 +84,6 @@
                     <!-- Heading -->
                     <div class="card-body">
                         <h4 class="card-title">Passenger Photo</h4>
-                        <h6 class="card-subtitle text-muted">Smart check-in!</h6>
                     </div>
                     <div class="card-body">
                         <div id="photo-container">
@@ -132,7 +130,7 @@
                     <span class="input-group-btn">
                         <button class="btn btn-success" type="button" onclick="myMedia.OnPhotoSendToDb();"
                             id="CheckInBtn" data-toggle="tooltip" data-placement="top"
-                            title="The Nickname and the current photo will be send the server for processing">
+                            title="The Nickname and the photo will be send to the database server">
                             Check-In
                         </button>
                     </span>
@@ -153,10 +151,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <button type="button" class="btn btn-outline-danger" id="InitDB"
+                    data-toggle="tooltip" data-placement="top" title="Delete all passengers from the database"
                     onclick="myMedia.OnDeletePassengers()">Initialize Database
                 </button>
 
                 <button type="button" class="btn btn-outline-info" id="PassengersList"
+                    data-toggle="tooltip" data-placement="top" title="Get the list of passengers stored in the database"
                     onclick="myMedia.OnClickPassengersList()">Get Passengers List
                 </button>
             </div>
@@ -170,7 +170,8 @@
     <script>
         // Initialize tooltip component
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+            // $('[data-toggle="tooltip"]').tooltip()
+            $('[rel=tooltip]').tooltip({ trigger: "hover" });
         })
 
         // Initialize popover component

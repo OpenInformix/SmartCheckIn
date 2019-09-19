@@ -131,7 +131,7 @@ class IfxPassengerService {
         this.DbConnect();
         var sql = `DELETE FROM passengers WHERE ( id= ${id} )`;
         if( id == 0 ) {
-            sql = `DELETE FROM passengers WHERE ( id>2 )`;
+            sql = `DELETE FROM passengers WHERE ( id>1 )`;
         }
         var rc = this.DirExec(false, sql);
         return (rc);
