@@ -24,12 +24,12 @@ class MyWebMedia {
 
   GenericErrorHandler(jqXHR, Data4Handlers, that) {
     let s = jqXHR.status + ' Error : ' + jqXHR.statusText
-    that.DisplayAlerts("danger", 2500, 300, s + "   " + Data4Handlers.error_msg );
+    that.DisplayAlerts("danger", 2500, 300, s + "   " + Data4Handlers.error_msg);
   }
 
   CheckInErrorHandler(jqXHR, Data4Handlers, that) {
     let s = jqXHR.status + ' Error : ' + jqXHR.statusText
-    that.DisplayAlerts("danger", 2500, 300, s + "   " + Data4Handlers.error_msg );
+    that.DisplayAlerts("danger", 2500, 300, s + "   " + Data4Handlers.error_msg);
   }
 
   DisplayAlerts(choice, delay, t2, msg) {
@@ -56,26 +56,22 @@ class MyWebMedia {
 
   }
 
-  ResetPhotoCompare(res) {
-    let MyPhotoContainerElement = document.querySelector("#photo-container");
-    MyPhotoContainerElement.style.borderColor = MediaContainerDefaultColor;
-  }
 
   SetStatusPhotoCompare(jsonObj) {
     let MyPhotoContainerElement = document.querySelector("#photo-container");
 
-    if (jsonObj.eDistance > this.eDistLowerThreshold && 
-          jsonObj.eDistance < this.eDistUpperThreshold) {
+    if (jsonObj.eDistance > this.eDistLowerThreshold &&
+      jsonObj.eDistance < this.eDistUpperThreshold) {
       MyPhotoContainerElement.style.borderColor = "green";
       this.DisplayAlerts("success", 2000, 300, "Welcome aboard");
     } else {
       MyPhotoContainerElement.style.borderColor = "red";
       let s = "Photo verification failed: please proceed to manual check-in process";
-      if ( jsonObj.mlsCode1 == 0 ) {
+      if (jsonObj.mlsCode1 == 0) {
         s = "User not found: please proceed to manual check-in process";
       }
 
-      this.DisplayAlerts("danger", 3000, 300, s  );
+      this.DisplayAlerts("danger", 3000, 300, s);
     }
   }
 
@@ -93,7 +89,7 @@ class MyWebMedia {
     that.SetStatusPhotoCompare(jsonObj);
   }
 
-  AddNewPassengerDataHandler( data, Data4Handlers, that) {
+  AddNewPassengerDataHandler(data, Data4Handlers, that) {
     var jsonObj = undefined;
 
     if (typeof data === 'string' || data instanceof String) {
@@ -186,7 +182,7 @@ class MyWebMedia {
       };
 
       this.SimpleAjax(ajaxObj, this.CheckInDataHandler,
-         this.CheckInErrorHandler, Data4Handlers, this);
+        this.CheckInErrorHandler, Data4Handlers, this);
     } else {
       Data4Handlers.error_msg = " Adding a new passenger";
       let ajaxObj = {
@@ -196,25 +192,24 @@ class MyWebMedia {
         data: objData
       };
       this.SimpleAjax(ajaxObj, this.AddNewPassengerDataHandler,
-          this.GenericErrorHandler, Data4Handlers, this);
+        this.GenericErrorHandler, Data4Handlers, this);
 
     }
   }
 
 
-  PassengersListDataHandler( data, Data4Handlers, that)
-  {
+  PassengersListDataHandler(data, Data4Handlers, that) {
     let s = undefined;
-    data.forEach(function(element) {
-      if( s == undefined ) {
+    data.forEach(function (element) {
+      if (s == undefined) {
         s = element.name.trim();
       } else {
         s = s + ",  " + element.name.trim();
       }
     });
 
-    s  =  `Found ${data.length} passenger(s) in the database (${s})` ;
-    that.DisplayAlerts("success", 2000, 300, s );
+    s = `Found ${data.length} passenger(s) in the database (${s})`;
+    that.DisplayAlerts("success", 2000, 300, s);
   }
 
   OnClickPassengersList() {
@@ -251,25 +246,25 @@ $(() => {    // jQuery document ready
   var width = 480;    // We will scale the photo width to this
   var height = 0;     // This will be computed based on the input stream
   var streaming = false;
-  let MediaContainerDefaultColor = "#333"
+  const MediaContainerDefaultColor = "#333"
   const webCamBtn = document.getElementById('webCamBtn');
 
-  var video = document.getElementById('webcamElement');
-  var canvas = document.getElementById('canvas');
-  var photo = document.getElementById('photo');
-  var PhotoBtn = document.getElementById('PhotoBtn');
-  var ClearPhotoBtn = document.getElementById('ClearPhotoBtn');
-  let CheckInBtn = document.getElementById('CheckInBtn');
+  const video = document.getElementById('webcamElement');
+  const canvas = document.getElementById('canvas');
+  const PhotoBtn = document.getElementById('PhotoBtn');
+  const ClearPhotoBtn = document.getElementById('ClearPhotoBtn');
+  const CheckInBtn = document.getElementById('CheckInBtn');
+  const NicknameInput = document.getElementById('NicknameInput');
   let LastOperationSelection = undefined;
   PhotoBtn.disabled = true;
   ClearPhotoBtn.disabled = true;
   CheckInBtn.disabled = true;
 
 
-  let MyWebCamContainerElement = document.querySelector("#webcam-container");
-  let MyPhotoContainerElement = document.querySelector("#photo-container");
+  const MyWebCamContainerElement = document.querySelector("#webcam-container");
+  const MyPhotoContainerElement = document.querySelector("#photo-container");
 
-  var OperationSelection = document.getElementById('AppOperationType1').value;
+  let OperationSelection = document.getElementById('AppOperationType1').value;
   var rad = document.AppOperationTypeForm.AppOperationType;
   for (var i = 0; i < rad.length; i++) {
     rad[i].addEventListener('change', function () {
@@ -277,7 +272,6 @@ $(() => {    // jQuery document ready
       LastOperationSelection = this.value;
 
       if (OperationSelection == "AddPassengers") {
-        // MyWebCamContainerElement.style.borderColor = "blue";
         MyPhotoContainerElement.style.borderColor = "blue";
         CheckInBtn.innerText = "New passenger";
         CheckInBtn.className = "btn btn-primary"
@@ -287,7 +281,6 @@ $(() => {    // jQuery document ready
         CheckInBtn.innerText = "Check-In";
         CheckInBtn.className = "btn btn-success"
       }
-      //console.log(this.value);
     });
   }
 
@@ -317,18 +310,6 @@ $(() => {    // jQuery document ready
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
-
-      // var data = canvas.toDataURL('image/jpeg', PhotoQuality);
-
-      // We will send this data the backend
-      // console.log( data );
-      // console.log( "Image Length = " + data.length );
-      // photo.setAttribute('src', data);
-
-      // canvas.toBlob(function(blob){
-      //   // The actual quality directly from canvas
-      //   alert("blob.size = " + blob.size);
-      // });
     } else {
       ClearPhoto();
     }
@@ -359,6 +340,10 @@ $(() => {    // jQuery document ready
     context.fillStyle = "#424242";
     context.fillRect(0, 0, canvas.width, canvas.height);
   }
+
+  NicknameInput.onchange = async () => {
+    MyPhotoContainerElement.style.borderColor = MediaContainerDefaultColor;
+  };
 
   ///////////////////////////////////////////////////
   myMedia.InitAlert();
