@@ -342,7 +342,11 @@ $(() => {    // jQuery document ready
   }
 
   NicknameInput.onchange = async () => {
-    MyPhotoContainerElement.style.borderColor = MediaContainerDefaultColor;
+    if (LastOperationSelection == "AddPassengers") {
+      MyPhotoContainerElement.style.borderColor = "blue";
+    } else {
+      MyPhotoContainerElement.style.borderColor = MediaContainerDefaultColor;
+    }
   };
 
   ///////////////////////////////////////////////////
