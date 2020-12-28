@@ -102,29 +102,57 @@ class IfxPassengerService {
         return (passenger);
     }
 
+    // sat: move to V2 (2020-12-28)
+    // PostReq(id, ReqBody) {
+    //     this.DbConnect();
+
+    //     // console.log( ReqBody );
+    //     var sql = `INSERT INTO passengers (name, img) VALUES ('${ReqBody.name}', '${ReqBody.img1}')`;
+
+    //     var rc = this.DirExec(false, sql);
+    //     console.log('img.len = ' + ReqBody.img1.length);
+    //     return (rc);
+    // }
+
+
     PostReq(id, ReqBody) {
         this.DbConnect();
-
-        // console.log( ReqBody );
-        var sql = `INSERT INTO passengers (name, img) VALUES ('${ReqBody.name}', '${ReqBody.img1}')`;
-
-        var rc = this.DirExec(false, sql);
-        console.log('img.len = ' + ReqBody.img1.length);
+        console.log( "execute function sqlAddNewPassenger()");
+        var sql = `execute function sqlAddNewPassenger ( 2020, '${ReqBody.name}', '${ReqBody.img1}')`;
+        var res_AddNewPassenger = this.Conn.querySync( sql );
+        console.log( "AddNewPassenger return: " + res_AddNewPassenger );
+        var rc = true; // tmp
         return (rc);
-    }
+    }    
+
+    // sat: move to V2 (2020-12-28)
+    // ExecMLsp(id, ReqBody) {
+    //     this.DbConnect();
+
+    //     // console.log( ReqBody );
+    //     var sql = `execute function sqlPhotoCompare ( 2019, '${ReqBody.name}', '${ReqBody.img1}')`;
+    //     var CompareRes = this.Conn.querySync( sql );
+    //     console.log( "CompareRes-1: " + CompareRes );
+    //     let FirstRec = CompareRes[0];
+    //     let res = JSON.parse( FirstRec[Object.keys(FirstRec)[0]] );
+
+    //     console.log( "CompareRes-2: " + JSON.stringify(res) );
+    //     return (res);
+    // }
 
     ExecMLsp(id, ReqBody) {
         this.DbConnect();
 
         // console.log( ReqBody );
-        var sql = `execute function sqlPhotoCompare ( 2019, '${ReqBody.name}', '${ReqBody.img1}')`;
+        var sql = `execute function sqlVerifyPassenger ( 2020, '${ReqBody.name}', '${ReqBody.img1}')`;
         var CompareRes = this.Conn.querySync( sql );
+        console.log( "sqlVerifyPassenger: " + CompareRes );
         let FirstRec = CompareRes[0];
         let res = JSON.parse( FirstRec[Object.keys(FirstRec)[0]] );
-
-        console.log( "CompareRes : " + JSON.stringify(res) );
+        console.log( "sqlVerifyPassenger res : " + JSON.stringify(res) );
         return (res);
     }
+
 
 
     DelReq(id) {

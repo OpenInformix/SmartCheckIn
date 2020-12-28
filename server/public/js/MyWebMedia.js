@@ -2,8 +2,8 @@
 
 
 class MyWebMedia {
-  eDistUpperThreshold = 45;
-  eDistLowerThreshold = 3; // Too good to be true, can it be faking ?.
+  eDistUpperThreshold = 0.55;
+  eDistLowerThreshold = 0.03; // Too good to be true, can it be faking ?.
 
   SimpleAjax(ajaxObj, MyDataHandler, MyErrorHandler, Data4Handlers, that) {
 
