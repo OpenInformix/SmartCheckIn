@@ -92,18 +92,18 @@ class IfxPassengerService {
     ////////////////////////////////////////////////////////////////////
     GetReq(ReqBody) {
         this.DbConnect();
-        var passengers = this.Conn.querySync("SELECT name FROM passengers");
+        var passengers = this.Conn.querySync("SELECT name FROM passengers2");
         return (passengers);
     }
 
     GetIdReq(id) {
         this.DbConnect();
-        var passenger = this.Conn.querySync("SELECT name FROM passengers WHERE id = " + id);
+        var passenger = this.Conn.querySync("SELECT name FROM passengers2 WHERE id = " + id);
         return (passenger);
     }
 
     // sat: move to V2 (2020-12-28)
-    // PostReq(id, ReqBody) {
+    // dbAddNewPassenger(id, ReqBody) {
     //     this.DbConnect();
 
     //     // console.log( ReqBody );
@@ -115,7 +115,7 @@ class IfxPassengerService {
     // }
 
 
-    PostReq(id, ReqBody) {
+    dbAddNewPassenger(id, ReqBody) {
         this.DbConnect();
         console.log( "execute function sqlAddNewPassenger()");
         var sql = `execute function sqlAddNewPassenger ( 2020, '${ReqBody.name}', '${ReqBody.img1}')`;
@@ -126,7 +126,7 @@ class IfxPassengerService {
     }    
 
     // sat: move to V2 (2020-12-28)
-    // ExecMLsp(id, ReqBody) {
+    // dbVerifyPassenger(id, ReqBody) {
     //     this.DbConnect();
 
     //     // console.log( ReqBody );
@@ -140,7 +140,7 @@ class IfxPassengerService {
     //     return (res);
     // }
 
-    ExecMLsp(id, ReqBody) {
+    dbVerifyPassenger(id, ReqBody) {
         this.DbConnect();
 
         // console.log( ReqBody );
@@ -157,9 +157,9 @@ class IfxPassengerService {
 
     DelReq(id) {
         this.DbConnect();
-        var sql = `DELETE FROM passengers WHERE ( id= ${id} )`;
+        var sql = `DELETE FROM passengers2 WHERE ( id= ${id} )`;
         if( id == 0 ) {
-            sql = `DELETE FROM passengers WHERE ( id>1 )`;
+            sql = `DELETE FROM passengers2 WHERE ( id>1 )`;
         }
         var rc = this.DirExec(false, sql);
         return (rc);

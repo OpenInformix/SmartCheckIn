@@ -39,7 +39,7 @@ router.post('/',
             console.log('img len = ' + img.length);
         }
 
-        let CompareRes = dbs.ExecMLsp(0, req.body)
+        let CompareRes = dbs.dbVerifyPassenger(0, req.body)
         if (CompareRes  != undefined) {
             res.status(201).json(CompareRes);
         }

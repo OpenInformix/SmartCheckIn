@@ -39,7 +39,7 @@ router.post('/',
             console.log('img len = ' + img.length);
         }
 
-        if (dbs.PostReq(0, req.body) == true) {
+        if (dbs.dbAddNewPassenger(0, req.body) == true) {
             res.status(201).json(req.body);
         }
         else {

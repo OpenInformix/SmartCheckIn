@@ -63,7 +63,7 @@ class MyWebMedia {
     if (jsonObj.eDistance > this.eDistLowerThreshold &&
       jsonObj.eDistance < this.eDistUpperThreshold) {
       MyPhotoContainerElement.style.borderColor = "green";
-      this.DisplayAlerts("success", 2000, 300, "Welcome aboard");
+      this.DisplayAlerts("success", 5000, 300, "Welcome aboard");
     } else {
       MyPhotoContainerElement.style.borderColor = "red";
       let s = "Photo verification failed: please proceed to manual check-in process";
