@@ -67,6 +67,8 @@ tmp
 tmp.*
 tmp/*.*
 
+.history
+.history/*
 
 package-lock.json
 **/package-lock.json
