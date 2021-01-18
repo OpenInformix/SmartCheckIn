@@ -17,14 +17,14 @@ docker system prune
 docker system prune -a
 
 
-docker build -t fend-app .
+docker build -t smart-cin-app1 .
 # delete an image
-# docker rmi fend-app <image id>
+# docker rmi smart-cin-app1 <image id>
 
 docker images
 # maped local-port:container-port
 # run the docker by assigning a container name = fend-cnt1
-docker run -it -d --name fend-cnt1 -p 3000:3000 -d fend-app
+docker run -it -d --name fend-cnt1 -p 3000:3000 -d smart-cin-app1
 ```
 
 ### Basic test
@@ -62,23 +62,23 @@ docker login
 docker logout
 
 
-docker ps | grep fend-app
+docker ps | grep smart-cin-app1
 # d0d7b996862d
 
 # docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
-docker commit d0d7b996862d  xuser1/fend-app
+docker commit d0d7b996862d  xuser1/smart-cin-app1
 
 # to push the image to docker hub
 # docker push [OPTIONS] NAME[:TAG]
-docker push xuser1/fend-app
+docker push xuser1/smart-cin-app1
 
 ```
 
 ### Pull the docker image from the docker hub and run
 ```bash
-docker pull xuser1/fend-app
-docker run -it -p 3000:3000 -d xuser1/fend-app
-# https://cloud.docker.com/repository/docker/xuser1/fend-app
+docker pull xuser1/smart-cin-app1
+docker run -it -p 3000:3000 -d xuser1/smart-cin-app1
+# https://cloud.docker.com/repository/docker/xuser1/smart-cin-app1
 ```
 
 
