@@ -13,6 +13,8 @@ RUN npm install
 
 # Bundle app source
 COPY ./server /usr/src/app/server
+COPY ./README.md /usr/src/app/
+COPY ./README.Docker.md /usr/src/app/
 
 EXPOSE 3000
 CMD [ "node", "server/server.js" ]
