@@ -21,6 +21,6 @@ udate MyConfig.json
 
 ### Start the application web server
 ```bash
-cd SmartCheckIn/server
-node server.js
+cd SmartCheckIn
+node server/server.js
 ```
