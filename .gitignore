@@ -70,7 +70,7 @@ tmp/*.*
 .history
 .history/*
 
-package-lock.json
-**/package-lock.json
+# package-lock.json
+# **/package-lock.json
 
 MyConfig.json

@@ -47,20 +47,25 @@ docker ps -a
 docker exec -it fend-cnt1 /bin/bash
 ```
 
-### delete the container
+### DELETE: container/docker image
 ```bash
 docker container rm fend-cnt1
-# fend-cnt1
+# fcai-cnt1
 
 docker ps -a
 # CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+# To remove docker image
+docker images
+docker image rm <image id>
 ```
+
+
 
 ### Create a new docker image from the container and push to docker hub
 ```bash
 docker login
 docker logout
-
 
 docker ps | grep smart-cin-app1
 # d0d7b996862d
@@ -71,7 +76,6 @@ docker commit d0d7b996862d  xuser1/smart-cin-app1
 # to push the image to docker hub
 # docker push [OPTIONS] NAME[:TAG]
 docker push xuser1/smart-cin-app1
-
 ```
 
 ### Pull the docker image from the docker hub and run
