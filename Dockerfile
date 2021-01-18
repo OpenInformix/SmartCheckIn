@@ -13,8 +13,6 @@ RUN npm install
 
 # Bundle app source
 COPY ./server /usr/src/app/server
-COPY ./model /usr/src/app/model
-COPY ./demo1 /usr/src/app/demo1
 
 EXPOSE 3000
 CMD [ "node", "server/server.js" ]
