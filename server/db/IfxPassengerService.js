@@ -18,7 +18,7 @@ DELETE FROM passengers WHERE id > 2;
 */
 
 
-var dbobj = require('ifxnjs');
+var dbobj = require('informixdb');
 var fs = require('fs');
 var path = require('path');
 

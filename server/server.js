@@ -55,8 +55,8 @@ console.log(`http://localhost:${port}/v1/checkin`);
 
 // Then  pass the 'app' to 'https' server
 https.createServer({
-  key: fs.readFileSync('./cert/key.pem'),
-  cert: fs.readFileSync('./cert/cert.pem'),
+  key: fs.readFileSync('./server/cert/key.pem'),
+  cert: fs.readFileSync('./server/cert/cert.pem'),
   passphrase: 'MyUnsecuredDemoOnlyPassphrase'
 }, app)
 .listen(port);
