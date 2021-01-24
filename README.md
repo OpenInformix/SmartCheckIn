@@ -39,5 +39,6 @@ ls -l ./assets/clientsdk.4.50.FC2.LINUX.tar
 # docker build -t chkin-app1 .
 
 # docker run -it -d --name chkin-cntn1 -p 3000:3000 -d chkin-app1
+# docker run -it -d --name chkin-cntn1 -p 3000:3000 -d xuser1/chkin-app1
 # https://<Host IP>:3000/
 ```

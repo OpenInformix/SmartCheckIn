@@ -93,8 +93,11 @@ docker push xuser1/chkin-app1
 ### Pull the docker image from the docker hub and run
 ```bash
 docker pull xuser1/chkin-app1
-docker run -it -p 3000:3000 -d xuser1/chkin-app1
+docker run -it -d --name chkin-cntn1 -p 3000:3000 -d xuser1/chkin-app1
 # https://cloud.docker.com/repository/docker/xuser1/chkin-app1
+
+#in case if you hve to copy MyConfig.json
+docker cp server/MyConfig.json  chkin-cntn1:/usr/src/app/server/MyConfig.json
 ```
 
 
